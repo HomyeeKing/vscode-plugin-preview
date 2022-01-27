@@ -10,15 +10,20 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:preview-link.helloWorld"
+        "onCommand:preview-link.helloWorld",
+        "onCommand:test"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "preview-link.helloWorld",
-				"title": "Hello World"
-			}
+				"title": "Hello VSCODE"
+			},
+      {
+        "command": "test",
+        "title": "test-mangyuan"
+      }
 		]
 	},
 	"scripts": {
