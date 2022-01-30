@@ -1,27 +1,38 @@
+import fetch from "node-fetch";
+
 const imgExt =
   "bmp,jpg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng";
 const imgRe = new RegExp(`\\.(${imgExt.replace(/,/g, "|")})`);
 
-enum UrlType {
-  IMG = "img",
-  AUDIO = "audio",
-  VIDEO = "video",
-  WEBSITE = "website",
-}
+type UrlType = "img" | "audio" | "video" | "website";
 
-export function checkUrl(url: string): {
-  type: UrlType;
-} {
+export async function checkUrl(url: string): Promise<Record<"type", UrlType>> {
   if (imgRe.test(url)) {
     return {
-      type: UrlType.IMG,
+      type: "img",
     };
   }
-// TODO: get request header
+  const res = await fetch(url);
+  const contentType = res.headers.get("content-type");
+  if (contentType?.startsWith("image/")) {
+    return {
+      type: "img",
+    };
+  }
+  if (contentType?.startsWith("audio/")) {
+    return {
+      type: "audio",
+    };
+  }
+  if (contentType?.startsWith("video/")) {
+    return {
+      type: "video",
+    };
+  }
 
-
-
-  return {
-    type: UrlType.WEBSITE,
-  };
+  {
+    return {
+      type: "website",
+    };
+  }
 }
