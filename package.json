@@ -50,5 +50,15 @@
   },
   "dependencies": {
     "node-fetch": "2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HomyeeKing/vscode-plugin-preview"
+  },
+  "license": "MIT",
+  "author": "HomyeeKing",
+  "bugs": {
+    "url": "https://github.com/HomyeeKing/vscode-plugin-preview/issues"
+  },
+  "homepage": "https://github.com/HomyeeKing/vscode-plugin-preview"
 }
