@@ -12,14 +12,13 @@ export function activate(context: vscode.ExtensionContext) {
 
   const disposal = vscode.languages.registerHoverProvider("javascript", {
     async provideHover(document, position, token) {
-      const URLregex =
+      const urlRe =
         /(https?:\/\/)*[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-      const range = document.getWordRangeAtPosition(position, URLregex);
+      const range = document.getWordRangeAtPosition(position, urlRe);
       const url = document.getText(range);
       // return new vscode.Hover(`![text](${url})`);
 
       const urlType = await checkUrl(url);
-      console.log("urlType :>> ", urlType);
       if (urlType.type === "img") {
         return new vscode.Hover(`![text](${url})`);
       }

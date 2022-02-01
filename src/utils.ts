@@ -1,5 +1,10 @@
 import fetch from "node-fetch";
 
+/**
+ * use node-fetch@2
+ * see https://stackoverflow.com/questions/70590704/fetching-in-a-vscode-extension-node-fetch-and-nodehttp-issues
+ * for more details
+ */
 const imgExt =
   "bmp,jpg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng";
 const imgRe = new RegExp(`\\.(${imgExt.replace(/,/g, "|")})`);
