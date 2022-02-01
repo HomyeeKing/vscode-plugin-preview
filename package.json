@@ -1,5 +1,6 @@
 {
   "name": "preview-link",
+  "publisher": "HomyeeKing",
   "displayName": "vscode-plugin-preview",
   "description": "preview link when hover",
   "version": "0.0.1",
