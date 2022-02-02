@@ -15,12 +15,33 @@ export function activate(context: vscode.ExtensionContext) {
       const urlRe =
         /(https?:\/\/)*[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
       const range = document.getWordRangeAtPosition(position, urlRe);
-      const url = document.getText(range);
-      // return new vscode.Hover(`![text](${url})`);
+      if (range) {
+        const url = document.getText(range);
+        // return new vscode.Hover(`![text](${url})`);
+        const mdStr = new vscode.MarkdownString();
+        mdStr.supportHtml = true;
+        mdStr.value = "";
+        const urlType = await checkUrl(url);
 
-      const urlType = await checkUrl(url);
-      if (urlType.type === "img") {
-        return new vscode.Hover(`![text](${url})`);
+        switch (urlType.type) {
+          case "img":
+            mdStr.value = `![hover-link-image](${url})`;
+            break;
+          // case "audio":
+          //   mdStr.value = `<audio controls src='${url}' >
+          //     vscode doesn't support audio, you can click Follow link for more details
+          //   </audio>`;
+          //   break;
+          // case "video":
+          //   mdStr.value = `<video controls src='${url}' width="250">
+          //    vscode doesn't support video, you can click Follow link for more details
+          //   </video>`;
+          //   break;
+          default:
+            break;
+        }
+
+        return new vscode.Hover(mdStr);
       }
     },
   });
