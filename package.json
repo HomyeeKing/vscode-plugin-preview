@@ -20,6 +20,11 @@
   "contributes": {
     "commands": []
   },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
