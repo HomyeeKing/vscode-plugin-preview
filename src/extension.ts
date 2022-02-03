@@ -11,18 +11,20 @@ export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "preview-link" is now active!');
 
   const disposal = vscode.languages.registerHoverProvider("javascript", {
-    async provideHover(document, position, token) {
+    async provideHover(document, position) {
       const urlRe =
-        /(https?:\/\/)*[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+        /(https?:)?\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=,\*]*)/gi;
       const range = document.getWordRangeAtPosition(position, urlRe);
       if (range) {
-        const url = document.getText(range);
-        // return new vscode.Hover(`![text](${url})`);
+        let url = document.getText(range);
+        if (url.startsWith("//")) {
+          url = `https:${url}`;
+        }
+        url = encodeURI(url);
         const mdStr = new vscode.MarkdownString();
         mdStr.supportHtml = true;
         mdStr.value = "";
         const urlType = await checkUrl(url);
-
         switch (urlType.type) {
           case "img":
             mdStr.value = `![hover-link-image](${url})`;
