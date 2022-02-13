@@ -1,8 +1,8 @@
 {
-  "name": "preview-link",
+  "name": "hover-helper",
   "publisher": "HomyeeKing",
-  "displayName": "Previw Link",
-  "description": "preview link when hover",
+  "displayName": "hover helper",
+  "description": "Enhance vscode hover information for some small but necessary scenario",
   "version": "0.3.0",
   "engines": {
     "vscode": "^1.63.0"

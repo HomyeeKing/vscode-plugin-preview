@@ -1,8 +1,13 @@
-# preview-link
+# hover-helper
 
-show image directly when you hover the link, we will infer the link type internally.
+Enhance vscode hover information for some small but necessary scenario.
 
-# example
+# Features
+
+### preview-img
+> works in `"javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc"`
+
+if the given url is a media url(image source), just show it in vscode, don't need to open it in the browser
 
 ```js
 const img = "https://miro.medium.com/max/1400/1*6ahbWjp_g9hqhaTDSJOL1Q.png"; // whole url
@@ -12,3 +17,8 @@ const img2 =
 ```
 
 https://user-images.githubusercontent.com/49113249/152314862-fe7fac6a-dd61-47c4-97e7-50532d74ecb9.mov
+
+### semver
+> works in `package.json`
+
+just hover on the semver and it will tell the valid range, you don't have to remember the advanced range syntax like `caret ranges` or `tilde ranges` etc anymore!
