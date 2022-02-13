@@ -13,8 +13,7 @@ export default  vscode.languages.registerHoverProvider(
   ],
   {
     async provideHover(document, position) {
-
-      console.log('preview link in');
+      console.log('media preview in');
       
       const urlRe =
         /(https?:)?\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=,\*!]*)/gi;

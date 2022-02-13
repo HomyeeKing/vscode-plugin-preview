@@ -14,7 +14,9 @@
     "onLanguage:javascript",
     "onLanguage:javascriptreact",
     "onLanguage:typescript",
-    "onLanguage:typescriptreact"
+    "onLanguage:typescriptreact",
+    "onLanguage:json",
+    "onLanguage:jsonc"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -42,6 +44,7 @@
     "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
     "@types/node-fetch": "2",
+    "@types/semver": "^7.3.9",
     "@types/vscode": "^1.63.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
@@ -55,7 +58,8 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "node-fetch": "2"
+    "node-fetch": "2",
+    "semver": "^7.3.5"
   },
   "repository": {
     "type": "git",
