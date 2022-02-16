@@ -46,7 +46,7 @@ export default  vscode.languages.registerHoverProvider(
           //   </video>`;
           //   break;
           case 'invalid':
-            mdStr.value = `the matched url is ${url}, please file an issue [here](${require('../package.json').bugs.url})`;
+            mdStr.value = `the matched url is ${url}, please file an issue [here](${require('../../package.json').bugs.url})`;
             break;
           default:
             break;
