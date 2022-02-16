@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { checkUrl } from './utils';
+import { checkUrl } from '../utils';
 
 
 export default  vscode.languages.registerHoverProvider(

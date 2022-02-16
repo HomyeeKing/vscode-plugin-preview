@@ -1,9 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import mediaDisposal from './preview-img';
-import semverDisposal from './semver';
-import hex2RgbDisposal from './hex2rgb';
+import mediaDisposal from './disposals/preview-img';
+import semverDisposal from './disposals/semver';
+import hex2RgbDisposal from './disposals/hex2rgb';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
