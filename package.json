@@ -11,12 +11,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:javascript",
-    "onLanguage:javascriptreact",
-    "onLanguage:typescript",
-    "onLanguage:typescriptreact",
-    "onLanguage:json",
-    "onLanguage:jsonc"
+   "*"
   ],
   "main": "./dist/extension.js",
   "contributes": {
