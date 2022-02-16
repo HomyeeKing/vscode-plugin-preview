@@ -11,7 +11,16 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:json",
+    "onLanguage:jsonc",
+    "onLanguage:css",
+    "onLanguage:less",
+    "onLanguage:sass",
+    "onLanguage:stylus"
   ],
   "main": "./dist/extension.js",
   "contributes": {
