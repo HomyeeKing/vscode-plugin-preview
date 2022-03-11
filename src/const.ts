@@ -1,0 +1,1 @@
+export const cssDescriptorRe =  ["scss", "sass", "stylus", "less", "css"];

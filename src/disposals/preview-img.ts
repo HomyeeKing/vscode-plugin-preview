@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { cssDescriptorRe } from '../const';
 import { checkUrl } from '../utils';
 
 
@@ -10,6 +11,7 @@ export default  vscode.languages.registerHoverProvider(
     "typescriptreact",
     "json",
     "jsonc",
+    ...cssDescriptorRe
   ],
   {
     async provideHover(document, position) {

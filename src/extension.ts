@@ -3,7 +3,6 @@
 import * as vscode from "vscode";
 import mediaDisposal from './disposals/preview-img';
 import semverDisposal from './disposals/semver';
-import hex2RgbDisposal from './disposals/hex2rgb';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -14,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 // languages id
 // https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
-  context.subscriptions.push(mediaDisposal,semverDisposal,hex2RgbDisposal);
+  context.subscriptions.push(mediaDisposal,semverDisposal);
 }
 
 // this method is called when your extension is deactivated
