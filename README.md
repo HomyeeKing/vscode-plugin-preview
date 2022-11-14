@@ -27,3 +27,8 @@ just hover on the semver and it will tell the valid range, you don't have to rem
 
 
 ![Kapture 2022-02-16 at 22 37 59](https://user-images.githubusercontent.com/49113249/154287274-a648b0cd-3bb3-4b10-b1d7-d923ab747439.gif)
+
+
+### toggle css properties
+
+right click to open context, then toggle CSS to CSSProperties vice versa.
