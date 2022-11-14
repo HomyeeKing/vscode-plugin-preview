@@ -85,6 +85,7 @@ export const toCSS = vscode.commands.registerCommand(
       editor?.edit((builder) => {
         builder.replace(
           selection,
+          // bad-case  rgba(a,g,b)
           convertCssPropertiesToCSS(selectionText?.split(',') || [])
         );
       });
