@@ -3,7 +3,7 @@
   "publisher": "HomyeeKing",
   "displayName": "hover helper",
   "description": "Enhance vscode hover information for some small but necessary scenario",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "engines": {
     "vscode": "^1.73.0"
   },
