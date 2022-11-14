@@ -43,7 +43,7 @@
         },
         {
           "when": "editorHasSelection",
-          "command": "extension.convconvertToCSSertCSS",
+          "command": "extension.convertToCSS",
           "group": "7_modification"
         }
       ]
