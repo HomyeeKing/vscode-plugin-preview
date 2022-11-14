@@ -44,18 +44,25 @@ function convertCSSToCssProperties(props: string[]) {
  * @param props cssproperites props
  * @returns
  */
-function convertCssPropertiesToCSS(props: string[]) {
-  return props
-    .map((p) => {
-      const _p = p.trim();
-      if (_p) {
-        // badcase: url(https://)
-        let [key, value] = _p.split(/:(?!\/\/)/);
-        value = value.trim();
-        return `${hyphenate(key.trim())}: ${value.slice(1, value.length - 1)}`;
-      }
-    })
-    .join(';\n');
+function convertCssPropertiesToCSS(selectionText: string) {
+  if (/(?<='|"|`),/.test(selectionText)) {
+    const props = selectionText?.split(/(?<='|"|`),/) || [];
+    return props
+      .map((p) => {
+        const _p = p.trim();
+        if (_p) {
+          // badcase: url(https://)
+          let [key, value] = _p.split(/:(?!\/\/)/);
+          value = value.trim();
+          return `${hyphenate(key.trim())}: ${value.slice(
+            1,
+            value.length - 1
+          )}`;
+        }
+      })
+      .join(';\n');
+  }
+  return selectionText;
 }
 
 export const toCSSProperties = vscode.commands.registerCommand(
@@ -67,30 +74,31 @@ export const toCSSProperties = vscode.commands.registerCommand(
     //   (schema.path as string).endsWith('.jsx') ||
     //   (schema.path as string).endsWith('.tsx');
     const editor = vscode.window.activeTextEditor;
-    for (const selection of editor?.selections || []) {
-      const selectionText = editor?.document.getText(selection);
-      editor?.edit((builder) => {
+
+    editor?.edit((builder) => {
+      for (const selection of editor?.selections || []) {
+        const selectionText = editor?.document.getText(selection);
         builder.replace(
           selection,
           convertCSSToCssProperties(selectionText?.split(';') || [])
         );
-      });
-    }
+      }
+    });
   }
 );
 export const toCSS = vscode.commands.registerCommand(
   'extension.convertToCSS',
   () => {
     const editor = vscode.window.activeTextEditor;
-    for (const selection of editor?.selections || []) {
-      const selectionText = editor?.document.getText(selection);
-      editor?.edit((builder) => {
+    editor?.edit((builder) => {
+      for (const selection of editor?.selections || []) {
+        const selectionText = editor?.document.getText(selection);
         builder.replace(
           selection,
           // bad-case  rgba(a,g,b)
-          convertCssPropertiesToCSS(selectionText?.split(/(?<='|"|`),/) || [])
+          convertCssPropertiesToCSS(selectionText)
         );
-      });
-    }
+      }
+    });
   }
 );
