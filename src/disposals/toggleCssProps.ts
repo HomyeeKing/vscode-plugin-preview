@@ -49,8 +49,10 @@ function convertCssPropertiesToCSS(props: string[]) {
     .map((p) => {
       const _p = p.trim();
       if (_p) {
-        const [key, value] = _p.split(/:(?!\/\/)/);
-        return `${hyphenate(key.trim())}: ${value.trim().replace(/\`/g, '')}`;
+        // badcase: url(https://)
+        let [key, value] = _p.split(/:(?!\/\/)/);
+        value = value.trim();
+        return `${hyphenate(key.trim())}: ${value.slice(1, value.length - 1)}`;
       }
     })
     .join(';\n');
@@ -86,7 +88,7 @@ export const toCSS = vscode.commands.registerCommand(
         builder.replace(
           selection,
           // bad-case  rgba(a,g,b)
-          convertCssPropertiesToCSS(selectionText?.split(',') || [])
+          convertCssPropertiesToCSS(selectionText?.split(/(?<='|"|`),/) || [])
         );
       });
     }
