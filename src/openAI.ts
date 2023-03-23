@@ -1,4 +1,3 @@
-import { AbortSignal } from 'node-fetch/externals';
 import { OpenAIApi, Configuration } from 'openai';
 
 const configuration = new Configuration({

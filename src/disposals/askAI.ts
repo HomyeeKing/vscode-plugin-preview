@@ -34,7 +34,6 @@ const handleAskAICommand = async (prompt?: string) => {
         });
         const { signal: abortSignal } = abortController;
         // to task
-        // @ts-ignore wrong fetch type
         return (await askAI(input, { abortSignal }))!;
       }
     )
