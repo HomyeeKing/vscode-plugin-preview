@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import mediaDisposal from './disposals/preview-img';
 import semverDisposal from './disposals/semver';
 import { toCSSProperties, toCSS } from './disposals/toggleCssProps';
+import askAIDisposal from './disposals/askAI';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,7 +19,8 @@ export function activate(context: vscode.ExtensionContext) {
     mediaDisposal,
     semverDisposal,
     toCSSProperties,
-    toCSS
+    toCSS,
+    askAIDisposal
   );
 }
 

@@ -32,6 +32,11 @@
       {
         "command": "extension.convertToCSSProperties",
         "title": "Convert To CSSProperties"
+      },
+      {
+        "command": "extension.askAI",
+        "title": "ask ai",
+        "when": "editorFocus"
       }
     ],
     "menus": {
