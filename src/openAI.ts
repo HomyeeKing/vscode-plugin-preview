@@ -1,3 +1,4 @@
+import { AbortSignal } from 'node-fetch/externals';
 import { OpenAIApi, Configuration } from 'openai';
 
 const configuration = new Configuration({
@@ -15,6 +16,7 @@ interface Options {
   onError?: (msg: AskAIReturnType) => void;
   /*@default text-davinci-003 */
   model?: string;
+  abortSignal?: AbortSignal;
 }
 
 let isRequesting = false;
@@ -33,7 +35,7 @@ export const askAI = async (
   console.log('process.env.OPENAI_API_KEY', process.env.OPENAI_API_KEY);
   if (!isRequesting) {
     isRequesting = true;
-    const { model = 'text-davinci-002', onError } = options;
+    const { model = 'text-davinci-002', onError, abortSignal } = options;
     try {
       const completion = await openai.createCompletion(
         {
@@ -47,6 +49,7 @@ export const askAI = async (
           headers: {
             'Transfer-Encoding': 'chunked',
           },
+          signal: abortSignal,
         }
       );
       isRequesting = false;

@@ -27,10 +27,15 @@ const handleAskAICommand = async (prompt?: string) => {
         title: `asking ${input} ...`,
         cancellable: true,
       },
-      async () => {
+      async (_, cancelToken) => {
+        const abortController = new AbortController();
+        cancelToken.onCancellationRequested(() => {
+          abortController.abort();
+        });
+        const { signal: abortSignal } = abortController;
         // to task
-        // TODO: singnal abort
-        return (await askAI(input))!;
+        // @ts-ignore wrong fetch type
+        return (await askAI(input, { abortSignal }))!;
       }
     )
     .then(async ({ type, data: ans }) => {
