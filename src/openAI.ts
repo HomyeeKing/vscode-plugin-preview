@@ -1,7 +1,8 @@
 import { OpenAIApi, Configuration } from 'openai';
+import { getConfigFromSettingJson } from './utils';
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: getConfigFromSettingJson('OPENAI_API_KEY'),
 });
 const openai = new OpenAIApi(configuration);
 
@@ -18,9 +19,6 @@ interface Options {
 
 let isRequesting = false;
 /**
- * TODO:
- * - 请求控制
- * - 流式加载
  * @param prompt
  * @param options
  * @returns
@@ -29,7 +27,6 @@ export const askAI = async (
   prompt: string,
   options: Options = {}
 ): Promise<AskAIReturnType | void> => {
-  console.log('process.env.OPENAI_API_KEY', process.env.OPENAI_API_KEY);
   if (!isRequesting) {
     isRequesting = true;
     const { model = 'text-davinci-002', onError, abortSignal } = options;

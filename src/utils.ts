@@ -1,4 +1,5 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
+import * as vscode from 'vscode';
 
 /**
  * use node-fetch@2
@@ -6,15 +7,15 @@ import fetch from "node-fetch";
  * for more details
  */
 const imgExt =
-  "bmp,jpg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng";
-const imgRe = new RegExp(`\\.(${imgExt.replace(/,/g, "|")})`);
+  'bmp,jpg,png,tif,gif,pcx,tga,exif,fpx,svg,psd,cdr,pcd,dxf,ufo,eps,ai,raw,WMF,webp,avif,apng';
+const imgRe = new RegExp(`\\.(${imgExt.replace(/,/g, '|')})`);
 
-type UrlType = "img" | "audio" | "video" | "website" | "invalid";
+type UrlType = 'img' | 'audio' | 'video' | 'website' | 'invalid';
 
-export async function checkUrl(url: string): Promise<Record<"type", UrlType>> {
+export async function checkUrl(url: string): Promise<Record<'type', UrlType>> {
   if (imgRe.test(url)) {
     return {
-      type: "img",
+      type: 'img',
     };
   }
 
@@ -22,32 +23,37 @@ export async function checkUrl(url: string): Promise<Record<"type", UrlType>> {
     const res = await fetch(url);
     if (!res.ok) {
       return {
-        type: "invalid",
+        type: 'invalid',
       };
     }
-    const contentType = res.headers.get("content-type");
-    if (contentType?.startsWith("image/")) {
+    const contentType = res.headers.get('content-type');
+    if (contentType?.startsWith('image/')) {
       return {
-        type: "img",
+        type: 'img',
       };
     }
-    if (contentType?.startsWith("audio/")) {
+    if (contentType?.startsWith('audio/')) {
       return {
-        type: "audio",
+        type: 'audio',
       };
     }
-    if (contentType?.startsWith("video/")) {
+    if (contentType?.startsWith('video/')) {
       return {
-        type: "video",
+        type: 'video',
       };
     }
 
     return {
-      type: "website",
+      type: 'website',
     };
   } catch (error) {
     return {
-      type: "invalid",
+      type: 'invalid',
     };
   }
 }
+
+export const getConfigFromSettingJson = <T = string>(
+  key: string
+): T | undefined =>
+  vscode.workspace.getConfiguration('hover-helper').get<T>(key);
