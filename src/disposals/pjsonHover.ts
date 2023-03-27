@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 import { validRange } from 'semver';
 import { getLocation } from 'jsonc-parser';
-import { version } from 'os';
 
 export default vscode.languages.registerHoverProvider(
   { scheme: 'file', language: 'json', pattern: '**/package.json' },

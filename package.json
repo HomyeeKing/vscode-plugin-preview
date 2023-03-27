@@ -8,19 +8,22 @@
     "vscode": "^1.73.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Snippets",
+    "Machine Learning",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "chatgpt",
+    "gpt",
+    "gpt4",
+    "gpt3.5",
+    "openai",
+    "hover",
+    "semver"
   ],
   "activationEvents": [
-    "onLanguage:javascript",
-    "onLanguage:javascriptreact",
-    "onLanguage:typescript",
-    "onLanguage:typescriptreact",
-    "onLanguage:json",
-    "onLanguage:jsonc",
-    "onLanguage:css",
-    "onLanguage:less",
-    "onLanguage:sass",
-    "onLanguage:stylus"
+    "onStartupFinished"
   ],
   "main": "./dist/extension.js",
   "contributes": {
