@@ -2,7 +2,7 @@
   "name": "hover-helper",
   "publisher": "HomyeeKing",
   "displayName": "hover helper",
-  "description": "Enhance vscode hover information for some small but necessary scenario",
+  "description": "Provide tiny useful information when you hover.",
   "version": "0.7.1",
   "engines": {
     "vscode": "^1.73.0"
