@@ -1,4 +1,4 @@
-<center><img src='./images/icon.png' alt='icon'></center>
+<center><img width="300" height="200" style="border-radius:20px;" src='./images/icon.png' alt='icon'></center>
 
 # Hover-Helper
 
