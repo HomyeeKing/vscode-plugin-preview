@@ -4,6 +4,7 @@
 
 Provide tiny useful information when you hover.
 
+<a href="https://marketplace.visualstudio.com/items?itemName=HomyeeKing.hover-helper" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/HomyeeKing.hover-helper.svg?color=blue&amp;label=VS%20Code%20Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
 # Features
 
 ## preview-img
