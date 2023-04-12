@@ -18,7 +18,7 @@ const img2 =
   "https://img0.baidu.com/it/u=3486467821,3996728349&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"; // infer from response header
 ```
 
-![Kapture 2022-02-16 at 22 33 36](https://user-images.githubusercontent.com/49113249/154286829-e84ab93c-cb84-4d2e-9705-43413d84d660.gif)
+![preview img](https://user-images.githubusercontent.com/49113249/231378269-b1338286-8468-4f6c-8296-f77e965774fb.gif)
 
 
 ## hover in package.json
