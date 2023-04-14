@@ -57,9 +57,9 @@
       ]
     }
   },
-  "icon": "images/icon.png",
+  "icon": "images/icon.svg",
   "galleryBanner": {
-    "color": "#C80000",
+    "color": "#ecacb2",
     "theme": "dark"
   },
   "scripts": {
