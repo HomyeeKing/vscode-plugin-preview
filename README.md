@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100" src='./images/icon.svg' alt='icon'>
+<img width="100" src='./images/icon.png' alt='icon'>
 </p>
 
 <h1 align="center">Hover-Helper
