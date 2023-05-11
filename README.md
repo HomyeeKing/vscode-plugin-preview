@@ -41,3 +41,6 @@ and you will know the current used version of hoverd package instantly!
 right click to open context, then toggle CSS to CSSProperties vice versa.
 
 ![toggle css](https://user-images.githubusercontent.com/49113249/231377555-2cc78bf1-bc32-4898-a6ac-bd090b773a2c.gif)
+
+
+## add terminal icon at status bar
