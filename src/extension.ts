@@ -3,7 +3,12 @@
 import mediaDisposal from './disposals/preview-img';
 import pjsonHover from './disposals/pjsonHover';
 import { toCSSProperties, toCSS } from './disposals/toggleCssProps';
-import { ExtensionContext, StatusBarAlignment, window, workspace } from 'vscode';
+import {
+  ExtensionContext,
+  StatusBarAlignment,
+  window,
+  workspace,
+} from 'vscode';
 // import askAI from './disposals/askAI';
 
 // this method is called when your extension is activated
@@ -17,7 +22,7 @@ export function activate(context: ExtensionContext) {
   const statusBar = window.createStatusBarItem(StatusBarAlignment.Right, 0);
   statusBar.command = {
     title: 'open terminal cwd',
-    command: 'workbench.action.terminal.newWithCwd',
+    command: 'workbench.action.terminal.focus',
     tooltip: 'Open CWD Terminal',
   };
   statusBar.text = '$(terminal)';
