@@ -3,13 +3,9 @@
 import mediaDisposal from './disposals/preview-img';
 import pjsonHover from './disposals/pjsonHover';
 import { toCSSProperties, toCSS } from './disposals/toggleCssProps';
-import {
-  ExtensionContext,
-  StatusBarAlignment,
-  window,
-  workspace,
-} from 'vscode';
+import { ExtensionContext } from 'vscode';
 import { deleteGitIgnores } from './disposals/gitignore';
+import { terminal } from './disposals/terminal';
 // import askAI from './disposals/askAI';
 
 // this method is called when your extension is activated
@@ -19,17 +15,6 @@ export function activate(context: ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('Congratulations, your extension "preview-link" is now active!');
 
-  //#region terminal icon
-  const statusBar = window.createStatusBarItem(StatusBarAlignment.Right, 0);
-  statusBar.command = {
-    title: 'open terminal cwd',
-    command: 'workbench.action.terminal.focus',
-    tooltip: 'Open CWD Terminal',
-  };
-  statusBar.text = '$(terminal)';
-  statusBar.show();
-  //#endregion
-
   // languages id
   // https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
   context.subscriptions.push(
@@ -38,7 +23,8 @@ export function activate(context: ExtensionContext) {
     pjsonHover,
     toCSSProperties,
     toCSS,
-    deleteGitIgnores
+    deleteGitIgnores,
+    terminal
     // askAI
   );
 }

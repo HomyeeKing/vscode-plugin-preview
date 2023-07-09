@@ -34,16 +34,23 @@
       },
       {
         "command": "extension.convertToCSSProperties",
-        "title": "Convert To CSSProperties"
+        "title": "Convert To CSSProperties",
+        "when": "editorHasSelection"
       },
       {
         "command": "extension.deleteIgnored",
-        "title": "Delete gitignore folder/file(s)"
+        "title": "Delete gitignore folder/file(s)",
+        "when": "editorHasSelection"
       },
       {
         "command": "extension.askAI",
         "title": "ask ai",
         "when": "editorFocus"
+      },
+      {
+        "command": "extension.openInTerminal",
+        "title": "Open in Terminal",
+        "when": "editorTextFocus"
       }
     ],
     "menus": {
@@ -57,6 +64,10 @@
           "when": "editorHasSelection",
           "command": "extension.convertToCSS",
           "group": "7_modification"
+        },
+        {
+          "command": "extension.openInTerminal",
+          "group": "navigation"
         }
       ],
       "explorer/context": [
