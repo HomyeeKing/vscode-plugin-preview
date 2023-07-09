@@ -45,6 +45,8 @@ right click to open context, then toggle CSS to CSSProperties vice versa.
 
 ## add terminal icon at status bar
 open intern terminal through terminal icon in status bar and open active document fold in terminal
+![image](https://github.com/HomyeeKing/vscode-plugin-preview/assets/49113249/8f435243-def1-4840-9366-bf8251976341)
+
 
 ## remove all gitignore file/folders
 > node_modules is exlcuded by default
