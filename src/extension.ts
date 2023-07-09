@@ -9,6 +9,7 @@ import {
   window,
   workspace,
 } from 'vscode';
+import { deleteGitIgnores } from './disposals/gitignore';
 // import askAI from './disposals/askAI';
 
 // this method is called when your extension is activated
@@ -36,7 +37,8 @@ export function activate(context: ExtensionContext) {
     // extension on package.json
     pjsonHover,
     toCSSProperties,
-    toCSS
+    toCSS,
+    deleteGitIgnores
     // askAI
   );
 }

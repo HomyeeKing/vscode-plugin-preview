@@ -37,6 +37,10 @@
         "title": "Convert To CSSProperties"
       },
       {
+        "command": "extension.deleteIgnored",
+        "title": "Delete gitignore folder/file(s)"
+      },
+      {
         "command": "extension.askAI",
         "title": "ask ai",
         "when": "editorFocus"
@@ -53,6 +57,11 @@
           "when": "editorHasSelection",
           "command": "extension.convertToCSS",
           "group": "7_modification"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.deleteIgnored"
         }
       ]
     }
