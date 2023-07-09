@@ -44,6 +44,7 @@ right click to open context, then toggle CSS to CSSProperties vice versa.
 
 
 ## add terminal icon at status bar
+open intern terminal through terminal icon in status bar and open active document fold in terminal
 
 ## remove all gitignore file/folders
 > node_modules is exlcuded by default
