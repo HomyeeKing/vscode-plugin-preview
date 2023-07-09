@@ -47,3 +47,7 @@ right click to open context, then toggle CSS to CSSProperties vice versa.
 
 ## remove all gitignore file/folders
 > node_modules is exlcuded by default
+![20230709124936](https://github.com/HomyeeKing/vscode-plugin-preview/assets/49113249/893085cb-29ea-4e32-827a-58b4948962c4)
+
+![image](https://github.com/HomyeeKing/vscode-plugin-preview/assets/49113249/e97f3d24-8a22-438b-a749-cf9e098b4a73)
+
