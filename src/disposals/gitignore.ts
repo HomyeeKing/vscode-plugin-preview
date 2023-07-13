@@ -1,13 +1,12 @@
 import * as vscode from 'vscode';
 import { exec } from 'child_process';
-import { join } from 'path';
 
 export const deleteGitIgnores = vscode.commands.registerCommand(
   'extension.deleteIgnored',
   () => {
     const folder = vscode.workspace.workspaceFolders![0];
     exec(
-      'git clean -xdn  --exclude=node_modules',
+      'git clean -Xdn  --exclude=node_modules',
       {
         cwd: folder.uri.path,
       },
@@ -15,7 +14,6 @@ export const deleteGitIgnores = vscode.commands.registerCommand(
         if (err) {
           vscode.window.showErrorMessage(err.message);
         }
-        console.log('stdout', stdout.length);
         if (stdout.length) {
           vscode.window
             .showWarningMessage(
@@ -28,10 +26,37 @@ export const deleteGitIgnores = vscode.commands.registerCommand(
               'No'
             )
             .then((result) => {
+              const abortController = new AbortController();
+              const { signal } = abortController;
               if (result === 'Yes') {
-                exec('git clean -xdf  --exclude=node_modules', {
-                  cwd: folder.uri.path,
-                });
+                vscode.window.withProgress(
+                  {
+                    location: vscode.ProgressLocation.Notification, // 进度条位置
+                    title:
+                      'Removing git ignored, it might takes some time, please hold on...', // 进度条标题
+                    cancellable: true, // 是否可以取消进度条
+                  },
+                  async (progress, token) => {
+                    token.onCancellationRequested(() => {
+                      abortController.abort();
+                    });
+                    return new Promise<void>((resolve, reject) => {
+                      exec(
+                        'git clean -Xdf  --exclude=node_modules',
+                        {
+                          cwd: folder.uri.path,
+                          signal,
+                        },
+                        (err, stdout) => {
+                          if (err) {
+                            reject(err);
+                          }
+                          resolve();
+                        }
+                      );
+                    });
+                  }
+                );
               } else {
                 // 用户点击了取消按钮或关闭了提示框
               }
