@@ -67,7 +67,7 @@
         },
         {
           "command": "extension.openInTerminal",
-          "group": "navigation"
+          "group": "navigation@1"
         }
       ],
       "explorer/context": [
