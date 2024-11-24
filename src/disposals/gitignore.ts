@@ -10,16 +10,49 @@ export const deleteGitIgnores = vscode.commands.registerCommand(
       {
         cwd: folder.uri.path,
       },
-      (err, stdout, stderr) => {
+      async (err, stdout, stderr) => {
         if (err) {
           vscode.window.showErrorMessage(err.message);
         }
         if (stdout.length) {
-          vscode.window
+          const files = stdout.split('\n').filter(Boolean);
+
+          // If more than 10 files, show preview panel
+          if (files.length > 10) {
+            // Create and show files list in a new editor
+            const previewContent = [
+              '# Files to be removed:',
+              '------------------------',
+              ...files.map((f) => `- ${f}`),
+              '',
+              '* To proceed with deletion, close this preview and confirm in the popup dialog.',
+              '* To cancel, just close this preview and select "No" in the popup dialog.',
+            ].join('\n');
+
+            const document = await vscode.workspace.openTextDocument({
+              content: previewContent,
+              language: 'markdown',
+            });
+
+            await vscode.window.showTextDocument(document, {
+              preview: true,
+              viewColumn: vscode.ViewColumn.Beside,
+            });
+          }
+          // Show confirmation dialog with appropriate message
+          const message =
+            files.length > 10
+              ? `Found ${files.length} files to be removed. Please review the list in the preview panel.`
+              : `Found ${files.length} files to be removed:\n${files.join(
+                  '\n'
+                )}`;
+
+          // Show confirmation dialog
+          await vscode.window
             .showWarningMessage(
-              stdout,
+              message,
               {
-                detail: 'Do you want to remove that all?',
+                detail: 'Do you want to remove all these files?',
                 modal: true,
               },
               'Yes',
